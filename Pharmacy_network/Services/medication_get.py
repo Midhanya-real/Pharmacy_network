@@ -19,7 +19,7 @@ def stuff_element(request, key):
     try:
         stuff = Stuff.objects.get(pk=key)
     except Stuff.DoesNotExist:
-        return Response('NOT_FOUND_DATA', status=status.HTTP_404_NOT_FOUND)
+        return Response([], status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         serializer = StuffDetailSerializer(stuff)
@@ -31,7 +31,7 @@ def stuff_in_pharmacy(request, key):
     try:
         Pharmacy.objects.get(pk=key)
     except Pharmacy.DoesNotExist:
-        return Response('NOT_FOUND_DATA', status=status.HTTP_404_NOT_FOUND)
+        return Response([], status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         shuff_in_pharmacy = Pharmacy_staff.objects.filter(pharmacy=key)

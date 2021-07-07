@@ -33,7 +33,7 @@ def pharmacy_in_city(request, city):
     try:
         pharmacy = Pharmacy.objects.filter(address__contains=city)
     except Pharmacy.DoesNotExist:
-        return Response('DATA_NOT_FOUND', status=status.HTTP_404_NOT_FOUND)
+        return Response([], status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
         serializer = PharmacyAllSerializer(pharmacy, many=True)

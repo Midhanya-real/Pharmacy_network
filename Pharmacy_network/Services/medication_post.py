@@ -23,7 +23,7 @@ def stuff_update(request, key):
     try:
         stuff = Stuff.objects.get(pk=key)
     except Stuff.DoesNotExist:
-        return Response('DATA_NOT_FOUND', status=status.HTTP_404_NOT_FOUND)
+        return Response([], status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'PUT':
         serializer = StuffDetailSerializer(stuff, data=request.data)
@@ -38,7 +38,7 @@ def stuff_add_in_pharmacy(request):
     try:
         stuff = Stuff.objects.get(pk=request.data['stuff'])
     except Stuff.DoesNotExist:
-        return Response('DATA_NOT_FOUND', status=status.HTTP_404_NOT_FOUND)
+        return Response([], status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'POST':
         serializer = StuffInPharmacyAdd(data=request.data)
