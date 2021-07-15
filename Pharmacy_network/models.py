@@ -7,9 +7,6 @@ class Pharmacy(models.Model):
     open_date = models.TimeField()
     close_date = models.TimeField()
 
-    def __str__(self):
-        return self.name
-
 
 class Stuff(models.Model):
     name = models.TextField()
@@ -17,9 +14,6 @@ class Stuff(models.Model):
     volume = models.IntegerField()
     country = models.TextField()
     date = models.DateField()
-
-    def __str__(self):
-        return self.name
 
 
 class Pharmacy_staff(models.Model):
