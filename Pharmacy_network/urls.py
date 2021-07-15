@@ -1,16 +1,16 @@
 from django.urls import path
 
-from Pharmacy_network.Services import pharmacy_get, medication_get, medication_post
+from pharmacy_network import views
 
 urlpatterns = [
-    path('all/', pharmacy_get.pharmacy_all),
-    path('all/city=<city>', pharmacy_get.pharmacy_in_city),
-    path('detail/<key>', pharmacy_get.pharmacy_element),
-    path('detail/<key>/items', medication_get.stuff_in_pharmacy),
-    path('add_item/', medication_post.stuff_add_in_pharmacy),
+    path('all/', views.PharmacyList.as_view()),
+    path('all/city=<city>', views.PharmacyCityFilter.as_view()),
+    path('detail/<pk>', views.PharmacyDetail.as_view()),
+    path('detail/<pk>/items', views.PharmacyStuffList.as_view()),
+    path('add_item/', views.AddMedicationInPharmacy.as_view()),
 
-    path('medication/all/', medication_get.stuff_all),
-    path('medication/detail/<key>', medication_get.stuff_element),
-    path('medication/add/', medication_post.stuff_add),
-    path('medication/update/<key>', medication_post.stuff_update),
+    path('medication/all/', views.MedicationList.as_view()),
+    path('medication/detail/<pk>', views.MedicationDetail.as_view()),
+    path('medication/add/', views.MedicationDetail.as_view()),
+    path('medication/update/<pk>', views.MedicationDetail.as_view()),
 ]

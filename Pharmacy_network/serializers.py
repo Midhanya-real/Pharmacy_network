@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Pharmacy_network.models import Pharmacy, Stuff, Pharmacy_staff
+from pharmacy_network.models import Pharmacy, Stuff, Pharmacy_staff
 
 
 class PharmacyAllSerializer(serializers.ModelSerializer):
@@ -39,3 +39,4 @@ class StuffInPharmacy(serializers.ModelSerializer):
     class Meta:
         model = Pharmacy_staff
         fields = ('pharmacy', 'stuff',)
+
